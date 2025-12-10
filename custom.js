@@ -536,7 +536,7 @@ async function cityLocate(cityname, type) {
   // let cityname = "서울";
 
   let response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`
   );
 
   let cityData = await response.json();
