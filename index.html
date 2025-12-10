@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg">
+      <video src="" autoplay muted loop></video>
+    </div>
+
+    <div class="main">
+      <div class="searching">
+        <input placeholder="도시 이름 입력" />
+        <button id="searchBtn">검색</button>
+      </div>
+
+      <p class="today"></p>
+
+      <h3>
+        <img
+          width="30"
+          height="30"
+          src="https://img.icons8.com/fluency/48/marker.png"
+          alt="marker"
+        />
+        <span class="cityName"></span>
+      </h3>
+
+      <div class="weatherInfo">
+        <!-- <img src="img/brightness_839368.png" alt="" /> -->
+        <img src="" class="mainIcon" />
+        <h2>
+          <p class="mainTemp"></p>
+          <span class="description"></span>
+        </h2>
+      </div>
+
+      <div class="weatherDes">
+        <ul>
+          <li>
+            <p>습도</p>
+            <div>
+              <img src="https://img.icons8.com/ios/50/drop-of-blood--v1.png" />
+              <span class="hum"></span>
+            </div>
+          </li>
+          <li>
+            <p>풍속·풍향</p>
+            <div>
+              <img src="https://img.icons8.com/ios/50/wind--v1.png" />
+              <span class="windy"></span>
+            </div>
+          </li>
+          <li>
+            <p>대기질</p>
+            <div>
+              <img src="https://img.icons8.com/pixels/32/dust.png" />
+              <span class="air"></span>
+            </div>
+          </li>
+        </ul>
+        <!-- <p>기타 날씨 설명</p> -->
+      </div>
+    </div>
+
+    <!-- <p id="location"></p> -->
+
+    <div class="down">
+      <div class="downBg">
+        <div class="switch">
+          <!-- <img
+          src="https://img.icons8.com/windows/32/clock--v1.png"
+        /> -->
+          <img
+            src="https://img.icons8.com/3d-sugary/100/wall-clock-2.png"
+            alt="wall-clock-2"
+            class="active"
+          />
+          <img src="https://img.icons8.com/3d-sugary/100/planner.png" />
+          <!-- <img
+          src="https://img.icons8.com/windows/32/baby-calendar.png"
+          alt="baby-calendar"
+        /> -->
+        </div>
+        <div class="board">
+          <div class="daily show">
+            <p class="today2"></p>
+            <ul class="dailyHourBoard">
+              <li>
+                <img src="" alt="" />
+                <div class="temp"></div>
+                <p></p>
+              </li>
+              <li>
+                <img src="" alt="" />
+                <div class="temp"></div>
+                <p></p>
+              </li>
+              <li>
+                <img src="" alt="" />
+                <div class="temp"></div>
+                <p></p>
+              </li>
+              <li>
+                <img src="" alt="" />
+                <div class="temp"></div>
+                <p></p>
+              </li>
+              <li>
+                <img src="" alt="" />
+                <div class="temp"></div>
+                <p></p>
+              </li>
+              <li>
+                <img src="" alt="" />
+                <div class="temp"></div>
+                <p></p>
+              </li>
+            </ul>
+          </div>
+          <div class="week">
+            <p class="time"></p>
+
+            <div class="chartBoard">
+              <canvas id="weatherChart" width></canvas>
+            </div>
+
+            <ul class="weekBoard">
+              <li>
+                <img src="" alt="" />
+                <p></p>
+                <div class="temp"></div>
+              </li>
+              <li>
+                <img src="" alt="" />
+                <p></p>
+                <div class="temp"></div>
+              </li>
+              <li>
+                <img src="" alt="" />
+                <p></p>
+                <div class="temp"></div>
+              </li>
+              <li>
+                <img src="" alt="" />
+                <p></p>
+                <div class="temp"></div>
+              </li>
+              <li>
+                <img src="" alt="" />
+                <p></p>
+                <div class="temp"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="custom.js"></script>
+  </body>
+</html>
