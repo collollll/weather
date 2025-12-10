@@ -195,7 +195,7 @@ async function mainRender(data) {
   let lat = data.coord.lat;
   let lon = data.coord.lon;
   let airResponse = await fetch(
-    `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`
+    `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`
   );
 
   let airData = await airResponse.json(); // json은 서버에서 뭘 가져오는 것? 그래서 비동기로 바꿔줘야함
