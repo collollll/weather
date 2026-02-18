@@ -6,12 +6,17 @@ ul {
   list-style: none;
 }
 
+/* 폰트 */
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+
+body {
+  font-family: "nanumgothic", "sans-serif";
+}
+
 @media (min-width: 1220px) {
   /* 배경 */
   body {
     min-height: 100vh;
-    /* width: 100vw; */
-    /* height: 100vh; */
     text-align: center;
     position: relative;
     align-content: center;
@@ -34,7 +39,7 @@ ul {
 
   /* 상단 */
   .main {
-    /* height: 50vh; */
+    padding: 10px 0px;
     align-content: center;
   }
 
@@ -139,7 +144,7 @@ ul {
 
   /* 하단 */
   .down {
-    /* height: 50vh; */
+    padding: 10px 0px;
     align-content: center;
   }
   .down .downBg {
@@ -149,7 +154,6 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* gap: 80px; */
     gap: 8%;
 
     margin: 50px auto 0px;
@@ -158,7 +162,6 @@ ul {
 
   /* 하단_스위치 버튼 */
   .down .switch {
-    /* width: 120px; */
     width: 15%;
     aspect-ratio: 1/1;
     position: relative;
@@ -222,10 +225,11 @@ ul {
     background: #fff;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 6px 6px 12px #c5c5c5, -3px -3px 12px #ffffff;
+    box-shadow:
+      6px 6px 12px #c5c5c5,
+      -3px -3px 12px #ffffff;
   }
   .down .board ul li img {
-    /* width: 50px; */
     width: 50%;
     background-color: white;
     padding: 10px;
@@ -287,9 +291,6 @@ ul {
   /* 배경 */
   body {
     min-height: 100vh;
-
-    /* width: 100vw; */
-    /* height: 100vh; */
     text-align: center;
     position: relative;
     align-content: center;
@@ -312,7 +313,7 @@ ul {
 
   /* 상단 */
   .main {
-    /* height: 50vh; */
+    padding: 10px 0px;
     align-content: center;
   }
 
@@ -361,6 +362,14 @@ ul {
   }
   .weatherInfo img {
     width: 60px;
+    padding: 7px;
+    transition: 0.3s;
+    border-radius: 50%;
+  }
+  .weatherInfo img:hover {
+    background-color: #3fa6eb;
+    filter: brightness(105%);
+    border-radius: 50%;
   }
   .weatherInfo h2 {
     display: flex;
@@ -410,7 +419,7 @@ ul {
 
   /* 하단 */
   .down {
-    /* height: 50vh; */
+    padding: 10px 0px;
     align-content: center;
   }
   .down .downBg {
@@ -420,8 +429,6 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* gap: 15px; */
-    /* gap: 10%; */
     gap: 5px;
 
     margin: 40px auto 0px;
@@ -430,7 +437,6 @@ ul {
 
   /* 하단_스위치 버튼 */
   .down .switch {
-    /* width: 120px; */
     width: 15%;
     aspect-ratio: 1/1;
     position: relative;
@@ -463,7 +469,6 @@ ul {
 
   /* 하단_보드 공통 */
   .down .board {
-    /* width: 70%; */
     width: 80%;
   }
   .down .board > div {
@@ -483,7 +488,6 @@ ul {
     box-sizing: border-box;
   }
   .down .board ul li {
-    /* padding: 10px; */
     padding: 2%;
     border-radius: 5px;
     box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);
@@ -495,10 +499,11 @@ ul {
     background: #fff;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 6px 6px 12px #c5c5c5, -3px -3px 12px #ffffff;
+    box-shadow:
+      6px 6px 12px #c5c5c5,
+      -3px -3px 12px #ffffff;
   }
   .down .board ul li img {
-    /* width: 50px; */
     width: 60%;
     min-width: 23px;
 
@@ -527,8 +532,6 @@ ul {
   }
   .board .dailyHourBoard .temp {
     margin: 5px 0px 10px;
-    /* font-size: 17px; */
-    /* font-size: 1.5vw; */
     font-size: clamp(14px, 1.5vw, 17px);
     font-weight: bold;
   }
@@ -575,9 +578,6 @@ ul {
   /* 배경 */
   body {
     min-height: 100vh;
-
-    /* width: 100vw; */
-    /* height: 100vh; */
     text-align: center;
     position: relative;
     align-content: center;
@@ -600,7 +600,7 @@ ul {
 
   /* 상단 */
   .main {
-    /* height: 50vh; */
+    padding: 10px 0px;
     align-content: center;
   }
 
@@ -650,6 +650,14 @@ ul {
   }
   .weatherInfo img {
     width: 60px;
+    padding: 7px;
+    transition: 0.3s;
+    border-radius: 50%;
+  }
+  .weatherInfo img:hover {
+    background-color: #3fa6eb;
+    filter: brightness(105%);
+    border-radius: 50%;
   }
   .weatherInfo h2 {
     display: flex;
@@ -698,7 +706,7 @@ ul {
 
   /* 하단 */
   .down {
-    /* height: 50vh; */
+    padding: 10px 0px;
     align-content: center;
   }
   .down .downBg {
@@ -706,11 +714,8 @@ ul {
     background-color: rgba(0, 0, 0, 0.15);
     padding: 40px 20px;
     box-sizing: border-box;
-    /* display: flex; */
     align-items: center;
     justify-content: center;
-    /* gap: 15px; */
-    /* gap: 10%; */
     gap: 5px;
 
     margin: 30px auto;
@@ -719,28 +724,19 @@ ul {
 
   /* 하단_스위치 버튼 */
   .down .switch {
-    /* width: 120px; */
-    /* width: 15%; */
-    /* width: 15%; */
-    /* aspect-ratio: 1/1; */
-    /* position: relative; */
     text-align: left;
     margin-bottom: 10px;
   }
   .down .switch::after {
     width: 110%;
     content: "";
-    /* position: absolute; */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
     border-top: 2px solid black;
   }
   .switch img {
-    /* width: 50%; */
-    /* width: 50px; */
     width: clamp(30px, 8%, 40px);
-    /* position: absolute; */
     transform: scale(0.4);
     transition: 0.3s;
     cursor: pointer;
@@ -756,10 +752,6 @@ ul {
   }
 
   /* 하단_보드 공통 */
-  .down .board {
-    /* width: 70%; */
-    /* width: 80%; */
-  }
   .down .board > div {
     display: none;
   }
@@ -775,7 +767,6 @@ ul {
     backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.5);
     box-sizing: border-box;
-
     overflow-x: auto;
   }
   .down .board ul::-webkit-scrollbar {
@@ -784,11 +775,9 @@ ul {
   .down .board ul::-webkit-scrollbar-thumb {
     background: rgba(77, 139, 255, 0.6);
     border-radius: 10px;
-    /* box-shadow: 0px 0px 0px 10px black; */
     cursor: pointer;
   }
   .down .board ul li {
-    /* padding: 10px; */
     padding: 2%;
     border-radius: 5px;
     box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.2);
@@ -801,13 +790,13 @@ ul {
     background: #fff;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 6px 6px 12px #c5c5c5, -3px -3px 12px #ffffff;
+    box-shadow:
+      6px 6px 12px #c5c5c5,
+      -3px -3px 12px #ffffff;
   }
   .down .board ul li img {
-    /* width: 50px; */
     width: 60%;
     min-width: 23px;
-
     background-color: white;
     padding: 5px;
     border-radius: 50%;
@@ -837,8 +826,6 @@ ul {
   }
   .board .dailyHourBoard .temp {
     margin: 5px 0px 10px;
-    /* font-size: 17px; */
-    /* font-size: 1.5vw; */
     font-size: clamp(14px, 1.5vw, 17px);
     font-weight: bold;
   }
@@ -902,7 +889,7 @@ ul {
     margin: 0px auto;
   }
   .main .weatherDes li:nth-child(2) {
-    margin: 15px 0px;
+    margin: 20px 0px;
   }
   .main .weatherDes li p {
     color: #444;

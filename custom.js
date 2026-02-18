@@ -1,4 +1,4 @@
-// 🔅요소 가져오기
+// 요소 가져오기
 let input = document.querySelector("input");
 let button = document.querySelector("#searchBtn");
 let place = document.querySelector("#location");
@@ -8,60 +8,54 @@ let APIkey = "b7455a97bd38920b2060fb02411125c9";
 
 let cityname = "seoul";
 
-// 🔅현재 위치로 날씨 가져오기
+// 현재 위치로 날씨 가져오기
 getLocation();
 function getLocation() {
   navigator.geolocation.getCurrentPosition((position) => {
-    nowWeather(position); // 현재 날씨
-    nowHourWeather(position); // 3시간 예보
-    nowWeekWeather(position); // 3시간 예보
+    nowWeather(position);
+    nowHourWeather(position);
+    nowWeekWeather(position);
   });
 }
 
+// 위경도 현재
 async function nowWeather(position) {
-  // 위경도 현재
-
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
 
   let response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`,
   );
 
-  let data = await response.json(); // json은 서버에서 뭘 가져오는 것? 그래서 비동기로 바꿔줘야함
+  let data = await response.json();
 
   console.log(data);
 
   mainRender(data);
 }
 
-//
-// 🔅
+// 위경도 하루 3시간
 async function nowHourWeather(position) {
-  // 위경도 하루 3시간
-
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
 
   let response = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`,
   );
-  let data = await response.json(); // json은 서버에서 뭘 가져오는 것? 그래서 비동기로 바꿔줘야함
+  let data = await response.json();
 
   console.log(data);
 
   hourRender(data);
 }
 
-// 🔅
+// 위경도 일주일
 nowWeekWeather = async (position) => {
-  // 위경도 일주일
-
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
 
   let response = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`,
   );
 
   let data = await response.json();
@@ -75,23 +69,14 @@ nowWeekWeather = async (position) => {
   weekRender(nowWeekData);
 };
 
-//
-//
-//
-//
-//
-//
-
-// 🔅도시 이름으로 날씨 가져오기
+// 도시 이름으로 날씨 가져오기
+// 도시 현재
 cityWeather = async (cityname) => {
-  // 도시 현재
-
   if (/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(cityname)) {
-    console.log("한글");
     data = await cityLocate(cityname, (type = "city"));
   } else {
     let response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`,
     );
     data = await response.json();
   }
@@ -101,16 +86,13 @@ cityWeather = async (cityname) => {
   mainRender(data);
 };
 
-// 🔅
+// 도시 하루 3시간
 async function cityHourWeather(cityname) {
-  // 도시 하루 3시간
-
   if (/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(cityname)) {
-    console.log("한글");
     data = await cityLocate(cityname, (type = "hour"));
   } else {
     let response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`,
     );
     data = await response.json();
   }
@@ -120,21 +102,17 @@ async function cityHourWeather(cityname) {
   hourRender(data);
 }
 
-//🔅
+// 도시 일주일
 cityWeekWeather = async (cityname) => {
-  // 도시 일주일
-
   if (/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(cityname)) {
     console.log("한글");
     data = await cityLocate(cityname, (type = "week"));
   } else {
     let response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`,
     );
     data = await response.json();
   }
-
-  // let cityWeekData = data.list.filter((item, index) => index % 8 == 0);
 
   let cityWeekData = data.list.filter((item) => {
     return item.dt_txt.slice(11, 16) == "09:00";
@@ -145,7 +123,7 @@ cityWeekWeather = async (cityname) => {
   weekRender(cityWeekData);
 };
 
-// 🔅날씨 정보 화면에 출력
+// 날씨 정보 화면에 출력
 let mainIcon = document.querySelector(".mainIcon");
 let mainTemp = document.querySelector(".mainTemp");
 let description = document.querySelector(".description");
@@ -156,19 +134,19 @@ let hum = document.querySelector(".hum");
 let windy = document.querySelector(".windy");
 let air = document.querySelector(".air");
 
+// 상단 렌더링
 async function mainRender(data) {
   console.log("메인", data);
   mainIcon.src = findIcon(data.weather[0].icon);
-  // mainIcon.title = `${data.weather[0].description}`;
 
   mainTemp.innerText = `${data.main.temp.toFixed(1)}℃`;
   description.innerText = data.weather[0].description;
   cityName.innerText = data.name;
-  // mainImg.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
-  //
+  // 습도
   hum.innerText = `${data.main.humidity}%`;
 
+  // 풍속/풍향
   let windDeg = data.wind.deg;
   let windDirection = [
     "북", // 0°
@@ -180,27 +158,20 @@ async function mainRender(data) {
     "서", // 270°
     "북서", // 315°
   ];
-
-  // 360° / 8 = 45°
   let windDeg2 = Math.round(windDeg / 45) % 8;
-
-  console.log(windDeg);
-  console.log(windDirection[windDeg2]);
 
   windy.innerHTML = `${
     windDirection[windDeg2]
   }풍 <br> ${data.wind.speed.toFixed(1)}m/s`;
 
-  console.log("되니", data.coord.lat);
+  // 대기질
   let lat = data.coord.lat;
   let lon = data.coord.lon;
   let airResponse = await fetch(
-    `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`
+    `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`,
   );
 
-  let airData = await airResponse.json(); // json은 서버에서 뭘 가져오는 것? 그래서 비동기로 바꿔줘야함
-
-  console.log("공기", airData);
+  let airData = await airResponse.json();
 
   if (airData.list[0].main.aqi == 1) {
     air.innerText = "좋음";
@@ -219,7 +190,6 @@ async function mainRender(data) {
     air.style.color = "red";
   }
 
-  //
   findVideo(data.weather[0].icon);
 }
 
@@ -227,14 +197,9 @@ let dailyIcon = document.querySelectorAll(".dailyHourBoard li img");
 let dailyTime = document.querySelectorAll(".dailyHourBoard li p");
 let dailyTemp = document.querySelectorAll(".dailyHourBoard li .temp");
 
+// 하단 렌더링
 function hourRender(data) {
   for (let i = 0; i < dailyTime.length; i++) {
-    // 아이콘
-    // dailyIcon[
-    //   i
-    // ].src = `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`;
-
-    console.log(i);
     dailyIcon[i].title = `${data.list[i].weather[0].description}`;
     dailyIcon[i].src = findIcon(data.list[i].weather[0].icon);
 
@@ -242,14 +207,12 @@ function hourRender(data) {
     dailyTemp[i].innerText = `${data.list[i].main.temp.toFixed(1)}℃`;
 
     // 시간
-    // timeEls[i].textContent = data.list[i].dt_txt; -> 입력되어 있는 전체 날짜&시간 말고 딱 [ 시:분 ]만 가져오고 싶음 >> 글자수를 계산해서 가져와야함
-    // [ "2025-11-12 06:00:00" ] -> 시:분의 순번?은 11~15
-    let label = data.list[i].dt_txt.slice(11, 16); // 11번째부터 15번째까지의(16번째 이전까지의) 글자를 잘라줌 (<-slice)
+    let label = data.list[i].dt_txt.slice(11, 16);
     dailyTime[i].textContent = label;
   }
 }
 
-//🔅오늘 날짜 넣기
+//오늘 날짜 넣기
 let today = document.querySelector(".today");
 let today2 = document.querySelector(".today2");
 
@@ -278,13 +241,7 @@ function weekRender(data) {
   labels = []; // 시간
 
   for (let i = 0; i < weekTime.length; i++) {
-    // 아이콘
-    // weekIcon[
-    //   i
-    // ].src = `https://openweathermap.org/img/wn/${data[i].weather[0].icon}.png`;
-
     weekIcon[i].title = `${data[i].weather[0].description}`;
-
     weekIcon[i].src = findIcon(data[i].weather[0].icon);
 
     // 온도
@@ -292,8 +249,6 @@ function weekRender(data) {
     weekTime[i].innerText = `${temp}℃`;
 
     // 시간
-    // timeEls[i].textContent = data.list[i].dt_txt; -> 입력되어 있는 전체 날짜&시간 말고 딱 [ 시:분 ]만 가져오고 싶음 >> 글자수를 계산해서 가져와야함
-    // [ "2025-11-12 06:00:00" ] -> 시:분의 순번?은 11~15
     let label = data[i].dt_txt.slice(5, 10);
 
     // 요일
@@ -302,32 +257,20 @@ function weekRender(data) {
 
     weekTemp[i].textContent = `${label} (${dayName})`;
 
-    //
-    //
-    //
-    // 차트용
-
-    temps.push(temp); // 온도를 temps 배열에 추가
-    labels.push(label); // 시간을 labels 배열에 추가
+    // 그래프용
+    temps.push(temp);
+    labels.push(label);
   }
 
   drawChart(labels, temps);
 }
 
-//
-//
-//
-//
-//
 // 배경 동영상
-
 let video = document.querySelector(".bg video");
-// video.playbackRate = 0.5;
 
 function findVideo(weatherIconDes) {
   console.log(weatherIconDes);
   let findWeather = weatherIconDes.slice(0, 2);
-  // findWeather = "09";
 
   if (findWeather == "01") {
     video.src = `img/clearsky.mp4`;
@@ -359,17 +302,9 @@ function findVideo(weatherIconDes) {
   }
 }
 
-//
-//
-//
-//
-//
-// 이모지 넣기
+// 아이콘 넣기
 function findIcon(IconDes) {
-  console.log(IconDes);
-
   let iconCode = IconDes.slice(0, 2);
-  // iconCode = "09";
 
   if (iconCode == "01") {
     return `img/sun.png`;
@@ -390,30 +325,14 @@ function findIcon(IconDes) {
   }
 }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// 🔅그래프 함수
-
+// 그래프 함수
 let chart;
 
 function drawChart(labels, temps) {
   let ctx = document.querySelector("#weatherChart").getContext("2d");
-  // let chartBoard = document.querySelector(".chartBoard");
-
-  // // 숨긴 상태에서 그려야 하는 경우
-  // chartBoard.style.display = "block";
-  // chartBoard.style.visibility = "hidden";
 
   if (chart) {
-    // 만약에 chart 안에 뭐라도 있으면(그러면 참이 됨)
-    chart.destroy(); // 기존 차트를 삭제 -> 삭제를 안하면 새로운 차트를 그릴 수가 없음, 오류 뜸
+    chart.destroy();
   }
 
   chart = new Chart(ctx, {
@@ -428,8 +347,7 @@ function drawChart(labels, temps) {
       ],
     },
     options: {
-      responsive: true, // CSS 크기에 맞게 조절
-      // maintainAspectRatio: false // 부모 높이에 맞춤
+      responsive: true,
       maintainAspectRatio: false,
       plugins: {
         legend: {
@@ -446,7 +364,6 @@ function drawChart(labels, temps) {
           min: -10,
           max: 30,
           ticks: {
-            // display: false,
             stepSize: 5,
             color: "black",
           },
@@ -471,16 +388,9 @@ function drawChart(labels, temps) {
       },
     },
   });
-
-  // chartBoard.style.visibility = "visible";
-  // chartBoard.style.display = "none"; // 버튼 누르면 block으로 바뀌게
 }
 
-//
-//
-//
-//
-// 스위치
+// 스위치 버튼
 let switchImg = document.querySelectorAll(".switch img");
 let boardList = document.querySelectorAll(".board > div");
 
@@ -498,17 +408,10 @@ switchImg.forEach((img, index) => {
 
     let findShow = document.querySelector(".board .week");
     if (findShow.classList.contains("show")) {
-      // 그래프 함수 호출 (온도, 시간을 가지고 감)
       drawChart(labels, temps);
     }
   });
 });
-
-//
-//
-//
-//
-//
 
 // 검색함수
 button.addEventListener("click", () => {
@@ -519,11 +422,9 @@ button.addEventListener("click", () => {
   cityWeekWeather(city);
 });
 
-// 🔅입력창에서 엔터키 눌러 도시명 가져오기
+// 입력창에서 엔터키 눌러 도시명 가져오기
 input.addEventListener("keydown", (e) => {
-  // key가 눌리는 이벤트가 발생할 때
   if (e.key == "Enter") {
-    // 만약 눌린 그 key가 enter키 라면
     city = input.value;
     input.value = "";
     cityWeather(city);
@@ -533,27 +434,23 @@ input.addEventListener("keydown", (e) => {
 });
 
 async function cityLocate(cityname, type) {
-  // let cityname = "서울";
-
   let response = await fetch(
-    `https://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${cityname}&appid=${APIkey}&units=metric&lang=kr`,
   );
 
   let cityData = await response.json();
   console.log(cityData);
-
-  // console.log(data);
 
   let lat = cityData[0].lat;
   let lon = cityData[0].lon;
 
   if (type == "city") {
     response2 = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`,
     );
   } else if (type == "hour" || type == "week") {
     response2 = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric&lang=kr`,
     );
   }
 
