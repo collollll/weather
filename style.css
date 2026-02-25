@@ -1,3 +1,6 @@
+/* 폰트 */
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+
 * {
   margin: 0px;
   padding: 0px;
@@ -5,9 +8,6 @@
 ul {
   list-style: none;
 }
-
-/* 폰트 */
-@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 
 body {
   font-family: "nanumgothic", "sans-serif";

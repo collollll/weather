@@ -281,7 +281,7 @@ function findVideo(weatherIconDes) {
     video.style.filter = "brightness(140%)";
   } else if (findWeather == "03") {
     video.src = `img/scatteredclouds.mp4`;
-    video.style.filter = "brightness(110%)";
+    // video.style.filter = "brightness(100%)";
   } else if (findWeather == "04") {
     video.src = `img/overcast.mp4`;
   } else if (findWeather == "09" || findWeather == "10") {
